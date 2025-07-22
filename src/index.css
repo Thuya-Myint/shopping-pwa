@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme{
+    --color-primary: #aab7ad;
+    --color-secondary: #e5e5e5;
+    --color-btn: #3f3d56;
+    --color-txtColor: #7a837c;
+}
+
+*{
+    /* user-select: none; */
+    /* webkit-user-select: none; */
+}

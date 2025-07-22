@@ -1,16 +1,26 @@
 import React from 'react'
-import Home from './home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './Login'
+import Home from './Home'
+import Deals from './Deals'
+import Product from './Product'
+import New_Arrival from './New_Arrival'
+import NotFound from './NotFound'
+
 const App = () => {
   return (
-    <div>
-      Min Thant Tun
-       <h1>Sai Saing Wan</h1>
-
-      <h1>thuyamyint</h1>
-      <Home/>
-      <Login/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Login />}/>
+        <Route path='/home' element={<Home />}/>
+        <Route path='/deals' element={<Deals />}/>
+        <Route path='new-arrival' element={<New_Arrival />}/>
+        <Route path='/products' element={<Product />}/>
+        
+        
+        <Route path='/*' element={<NotFound />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
