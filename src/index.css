@@ -2,12 +2,70 @@
 
 @theme{
     --color-primary: #aab7ad;
-    --color-secondary: #e5e5e5;
+    --color-secondary: #cbcbcb;
+    --color-third:#91a095;
+    --color-navColor: #91a095;
     --color-btn: #3f3d56;
     --color-txtColor: #7a837c;
+    --color-txtColor2: #f1f1f1;
+    --color-txtColor3: #767676;
+    --color-hoverColor: #6c6c6c;
 }
 
 *{
     /* user-select: none; */
     /* webkit-user-select: none; */
+}
+
+.bgColor{
+    background-color: #dfdfdf;
+}
+
+.selectNone{
+    user-select: none;
+    webkit-user-select: none;
+}
+
+.navHover{
+    &:hover{
+        color: #d0f1c4;
+        letter-spacing: 0.2rem;
+        border-bottom: 2px solid #d0f1c4;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+.btnHover{
+    &:hover{
+        scale: 105%;
+        background-color: rgb(75, 75, 75);
+        color: #aab7ad;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.inputHover{
+    &:hover{
+        background-color: rgb(155, 170, 158);
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+.txtHover{
+    &:hover{
+        color:rgb(40, 40, 40);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.txtSale{
+    -webkit-text-stroke: 0.1rem black;
+    transform: scaleY(1.3);
+    display: inline-block;
+}
+
+.stretchTxt{
+    -webkit-text-stroke: 0.05rem;
+    transform: scaleY(1.5);
+    display: inline-block;
 }

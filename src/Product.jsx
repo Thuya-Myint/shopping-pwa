@@ -2,7 +2,7 @@ import React from 'react'
 
 const Product = () => {
   return (
-    <div>Product page</div>
+    <div className='bgColor'>Product page</div>
   )
 }
 

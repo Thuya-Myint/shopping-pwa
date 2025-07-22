@@ -2,7 +2,7 @@ import React from 'react'
 
 const Deals = () => {
   return (
-    <div>Deals</div>
+    <div className='bgColor'>Deals</div>
   )
 }
 
