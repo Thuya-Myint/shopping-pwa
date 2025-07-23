@@ -1,14 +1,14 @@
 import React from 'react'
-import loginBack from './assets/img/login_back.png'
+import loginBack from './assets/img/Frame 1.png'
 import logo from './assets/img/logo.png'
 import { Link } from 'react-router-dom'
 const Login = () => {
     return (
         <div className='grid h-screen grid-cols-5 font-roboto'>
-            <div className='grid col-span-3 items-center justify-center' style={{ backgroundImage: `url(${loginBack})` }}>
-                <div className=' bg-white/50 p-[60px] w-xl pr-[200px]'>
-                    <p className='text-[45px]/15 text-white capitalize font-bold mb-2'>Destination for the latest <span className='text-[#3E334E]'>electronics</span></p>
-                    <p className='text-[#3E334E] text-[18px]'>Unlock a smarter lifestyle with top gadgets delivered right to your door.</p>                   
+            <div className='grid col-span-3 items-center justify-center bg-cover' style={{ backgroundImage: `url(${loginBack})` }}>
+                <div className=' bg-primary/70 p-[60px] w-xl pr-[200px]'>
+                    <p className='text-[45px]/15 text-white capitalize font-bold mb-2'>Destination for the latest <span className='text-[#141414]'>electronics</span></p>
+                    <p className='text-[#141414] text-[18px]'>Unlock a smarter lifestyle with top gadgets delivered right to your door.</p>                   
                 </div>
             </div>
             <div className='col-span-2 flex justify-center px-[50px]'>
@@ -33,7 +33,7 @@ const Login = () => {
                             </div> 
                         </div> 
                         <div className='grid grid-cols-2 gap-[20px]'>
-                            <Link to={'/'} className='px-[25px] py-[15px] bg-linear-to-r to-[#00B6CA] from-[#A03CEA] rounded-md flex justify-center items-center text-white font-semibold hover:opacity-50'>Login</Link>
+                            <Link to={'/home'} className='px-[25px] py-[15px] bg-linear-to-t to-[#646464] from-[#141414] rounded-md flex justify-center items-center text-white font-semibold hover:opacity-50'>Login</Link>
                             <Link to={'/'} className='px-[25px] py-[15px] border-1 rounded-md flex justify-center items-center font-semibold hover:bg-gray-300'>Sign Up</Link>
                         </div> 
                         <p className='text-center'>Or, login with</p> 

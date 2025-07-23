@@ -14,7 +14,9 @@ import banner from './assets/img/banner.png'
 import blog1 from './assets/img/blog1.jpg'
 import blog2 from './assets/img/blog2.jpg'
 import blog3 from './assets/img/blog3.jpg'
-
+import slideImage from './assets/img/applewatch.png'
+import banner2 from './assets/img/banner1.png'
+import banner3 from './assets/img/banner3.png'
 const blogs=[
   {
     title:'Get Some Cool Gadget in 2025',
@@ -65,12 +67,12 @@ const slides=[
  {
   title: 'Beyond Devices. Experience True Harmony.',
   buttonText: 'Shop Now',
-  image: './assets/img/applewatch.png'
+  image: slideImage
  },
   {
   title: 'Beyond Devices. Experience True Harmony.',
   buttonText: 'Shop Now',
-  image: './assets/img/applewatch.png'
+  image: slideImage
  }
 ]
 const images = [
@@ -96,23 +98,55 @@ const images = [
   }
 ]
 
+
+
 const Home = () => {
   return (
-      <div className='text-primaryText'>
+      <div className='text-primaryText min-w-full'>
         <Nav/>
-        {/* <Carousel autoSlide={true} > */}
-          {/* {slides.map((s,index)=>(
-            <div key={index} className='flex p-[50px] bg-gray-300 w-full'>
-              <div>
-                <h2 className=''>{s.title}</h2>
-                <Link to='/product'>{s.buttonText}</Link>
-              </div>
-              <div className=''>
-                <img src={s.image} alt="Slide image" className='' />
-              </div>
+        <Carousel>
+            <div className="min-w-full flex justify-end items-center bg-background pl-[300px]">
+              <div className='flex flex-1/2 flex-col gap-[30px]'>
+                <div className='flex flex-col gap-[15px]'>
+                  <p className='text-[50px] uppercase'>Beyond Devices. Experience True Harmony.</p>
+                </div>
+                <div className='flex '>
+                  <Link to={'/product'} className='px-[40px] py-[10px] bg-black text-white text-xl hover:bg-primay/80'> SHOP NOW</Link>
+                </div>
+              </div> 
+              <div className='flex-1/2 flex justify-center items-center'>
+                <img src={slideImage} alt="" className='w-[400px]' />
+              </div>   
             </div>
-            ))} */}
-        {/* </Carousel> */}
+            <div className="min-w-full flex justify-end items-center bg-background pl-[300px]">
+              <div className='flex flex-1/2 flex-col gap-[30px]'>
+                <div className='flex flex-col gap-[15px]'>
+                  <p className='text-[50px] uppercase'>Every essential, in one place.</p>
+                </div>
+                <div className='flex '>
+                  <Link to={'/product'} className='px-[40px] py-[10px] bg-black text-white text-xl hover:bg-primay/80'> SHOP NOW</Link>
+                </div>
+              </div> 
+              <div className='flex-1/2 flex justify-center items-center'>
+                <img src={banner2} alt="" className='w-[500px]' />
+              </div>   
+            </div>
+            <div className="min-w-full flex justify-end items-center bg-background pl-[300px]">
+              <div className='flex flex-1/2 flex-col gap-[30px]'>
+                <div className='flex flex-col gap-[15px]'>
+                  <p className='text-[50px] uppercase'>Beyond Durable. Beyond Design.</p>
+                </div>
+                <div className='flex '>
+                  <Link to={'/product'} className='px-[40px] py-[10px] bg-black text-white text-xl hover:bg-primay/80'> SHOP NOW</Link>
+                </div>
+              </div> 
+              <div className='flex-1/2 flex justify-center items-center'>
+                <img src={banner3} alt="" className='w-[400px]' />
+              </div>   
+            </div>
+
+        </Carousel>
+
         
         <div className='py-[80px] px-[150px] flex flex-col gap-[100px]'> {/* Top Container*/}
           <div className='flex justify-between items-center'>
@@ -164,7 +198,7 @@ const Home = () => {
                   <div className='relative h-full flex-1'>
                     <img src={content.img} alt="" className='object-cover w-full h-full' />
                     <div className='absolute inset-0 flex justify-center items-end text-white px-[20px] pb-5'>
-                      <Link to={'/cart'} className='flex justify-center items-center gap-3 bg-black px-7 py-3'>
+                      <Link to={'/cart'} className='flex justify-center items-center gap-3 bg-black px-7 py-3 hover:opacity-80'>
                         Add To Cart 
                         <FontAwesomeIcon icon={faShoppingCart} />
                       </Link>
@@ -192,7 +226,7 @@ const Home = () => {
             </div>            
             <div className='flex gap-[20px] items-stretch'> {/* Watch Container*/}
               {watches.map((content, index) => (
-                <div key={index} className='flex flex-1 flex-col gap-2'>
+                <div key={index} className='flex flex-1 flex-col gap-2 hover:-translate-y-2 hover:cursor-pointer'>
                   <div className='relative flex-1'>
                     <img src={content.image} alt="" className='object-cover w-full h-full' />
                     {/* <div className='absolute inset-0 flex justify-center items-end text-white px-[20px] pb-5'>
@@ -227,7 +261,7 @@ const Home = () => {
               <p className='text-[50px]'>NEW YEAR SALE</p>
             </div>
             <div className='flex '>
-              <Link to={'/product'} className='px-[px] py-[10px] bg-black text-white text-xl hover:bg-primay'> SHOP SALE</Link>
+              <Link to={'/product'} className='px-[40px] py-[10px] bg-black text-white text-xl hover:bg-primay'> SHOP SALE</Link>
             </div>
           </div>
           <div className='flex-1/2 flex justify-center items-center'>
@@ -242,9 +276,9 @@ const Home = () => {
               <p className='text-3xl font-bold'>Latest Posts</p>
               <Link to={'/product'} className='underline'>Read Blogs</Link>
             </div>            
-            <div className='flex gap-[20px] items-stretch'> {/* Watch Container*/}
+            <div className='flex gap-[20px] items-stretch'> {/* Blog Container*/}
               {blogs.map((content, index) => (
-                <div key={index} className='flex flex-1 flex-col gap-2 hover:translate-y-1 hover:cursor-pointer hover: opacity-85'>
+                <div key={index} className='flex flex-1 flex-col gap-2 hover:-translate-y-1 hover:cursor-pointer hover:opacity-85'>
                   <div className='flex-1'>
                     <img src={content.image} alt="" className='object-cover w-full h-full' />
                   </div>
