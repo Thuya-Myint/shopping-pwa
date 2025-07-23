@@ -1,8 +1,14 @@
 import React from 'react'
-
+import Navbar from './Navbar'
+import Carousel from './Carousel'
 const Home = () => {
+
   return (
-    <div>Home Page</div>
+    <div>
+      <Navbar />
+      <Carousel />
+
+    </div>
   )
 }
 
