@@ -1,1 +1,11 @@
 @import "tailwindcss";
+@import '@fontsource/roboto';
+
+@theme{
+    --color-background:#e8e9ea;
+    --color-primaryText:#2c2c2c;
+    --color-secondaryText:#6b6b6b;
+    --color-primary: #6b6b6b;
+    --color-accent:#4a90e2;
+    --font-roboto: "Roboto",sans-serif;
+}
