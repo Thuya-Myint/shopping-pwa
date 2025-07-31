@@ -2,14 +2,17 @@
 
 @theme{
     --color-primary: #aab7ad;
-    --color-secondary: #cbcbcb;
+    --color-secondary: #dbdbdb;
     --color-third:#91a095;
     --color-navColor: #91a095;
     --color-btn: #3f3d56;
     --color-txtColor: #7a837c;
     --color-txtColor2: #f1f1f1;
     --color-txtColor3: #767676;
+    --color-txtColor4: #35363d;
     --color-hoverColor: #6c6c6c;
+    --font-georgia: 'Georgia', serif;
+    --font-roboto: 'Roboto', sans-serif;
 }
 
 *{
@@ -18,7 +21,7 @@
 }
 
 .bgColor{
-    background-color: #dfdfdf;
+    background-color: #efe9e9;
 }
 
 .selectNone{
@@ -29,8 +32,7 @@
 .navHover{
     &:hover{
         color: #d0f1c4;
-        letter-spacing: 0.2rem;
-        border-bottom: 2px solid #d0f1c4;
+        letter-spacing: 0.1rem;
         transition: all 0.5s ease-in-out;
     }
 }
@@ -55,6 +57,16 @@
     &:hover{
         color:rgb(40, 40, 40);
         transition: all 0.3s ease-in-out;
+    }
+}
+
+.FooterHover{
+    &:hover{
+        color: var(--color-txtColor2);
+        transition: all 0.3s ease-in-out;
+    }
+    &:active{
+        color: var(--color-txtColor2);
     }
 }
 
