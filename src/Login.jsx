@@ -73,14 +73,14 @@ const Login = () => {
                             {/* <img src={LoginImages[0]} alt="logo" className='w-[100px]' /> */}
                         </div>
                         <h1 className='text-center text-2xl font-mono font-bold text-txtColor mt-5 mb-3'>Nice to see you again</h1>
-                        <div className='grid gap-4 pt-3'>
+                        <div className='grid w-full gap-4 pt-3'>
                             <input 
                             value={email}
                             type="text" 
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder='Email or phone number'
-                            className='bg-primary rounded-lg h-10 pl-2 inputHover outline-none' />
-                            <div className='w-full place-content-between flex items-center bg-primary rounded-lg h-10 px-2 inputHover'>
+                            className='bg-primary rounded-lg py-2 pl-2 inputHover outline-none' />
+                            <div className='w-full place-content-between flex items-center bg-primary rounded-lg py-2 px-2 inputHover'>
                                 <input 
                                 value={password}
                                 type={isShowPassword ? "text" : "password"}

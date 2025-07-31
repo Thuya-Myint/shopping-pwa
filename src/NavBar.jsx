@@ -8,6 +8,8 @@ const NavBar = () => {
   
 
   return (
+    window.innerWidth >= 768
+    ?
     <div className='mb-20'>
         <div className='flex place-content-between align-middle bg-navColor h-15'>
             <div className='flex ml-30 py-1 items-center gap-5'>
@@ -36,6 +38,11 @@ const NavBar = () => {
 
         </div>
     </div>
+    :
+    <div>
+      md size
+    </div>
+    
   )
 }
 

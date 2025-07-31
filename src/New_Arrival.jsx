@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import shinyDressImg from './assests/image/pImg1.png'
+import NavBar from './NavBar'
 //import { FaStar } from "react-icons/fa"
 
 // import NavBar from './NavBar'
@@ -20,7 +21,8 @@ const New_Arrival = () => {
   ]
 
   return (
-    <div className='bgColor h-screen'>
+    <div className='bgColor w-screen h-screen'>
+      <NavBar />
       <div className='px-30 py-20'>
         <div className='text-center px-60'>
           <h1 className='font-georgia text-4xl text-txtColor'>
