@@ -2,11 +2,10 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from './assests/image/logoBrand.png'
 import {navItems} from './constants'
+import { IoMenu } from "react-icons/io5";
 
 const NavBar = () => {
-
   
-
   return (
     window.innerWidth >= 768
     ?
@@ -16,10 +15,6 @@ const NavBar = () => {
                 <img src={logo} alt="logo" className='h-full' />
                 <h1 className='text-3xl font-bold font-serif selectNone'>THREADED</h1>
             </div>
-
-            {/*
-              Nav links
-            */}
             
             <div className='flex gap-3 mr-30 items-center'>
               {navItems.map(link => (
@@ -39,8 +34,24 @@ const NavBar = () => {
         </div>
     </div>
     :
-    <div>
-      md size
+    <div className='flex relative items-center place-content-between w-full bg-navColor py-2 px-3'>
+      <div className='text-3xl font-bold font-serif selectNone cursor-pointer'>THREADED</div>
+        <div>
+          <IoMenu className='cursor-pointer text-3xl' />
+          <div className='absolute w-1/2 h-screen flex flex-col bg-amber-500 right-0'>
+            {navItems.map(item => (
+              <div className='navHover text-lg text-secondary text-center'>
+                      <NavLink 
+                        key={item.name}
+                        to={item.path}
+                        className=''
+                      >
+                        {item.name}
+                      </NavLink>
+                    </div>
+            ))}
+          </div>
+        </div>
     </div>
     
   )

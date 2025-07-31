@@ -9,12 +9,12 @@ const Home = () => {
   return (
     <div className='bgColor'>
       <NavBar/>
-      <div className='grid grid-cols-3 grid-rows-1 gap-10 rounded-3x mx-30 max-h-[750px]'>
-        <div className='bg-[#91a095] rounded-3xl flex items-end justify-center'>
+      <div className='grid grid-cols-7 grid-rows-1 gap-10 rounded-3x mx-30 max-h-[750px]'>
+        <div className='bg-[#91a095] rounded-3xl grid col-span-2 items-end justify-center'>
           <img src={homeImages[0]} alt="image1" />
         </div>
-        <div className='grid grid-rows-5 w-full h-full'>
-          <div className='bg-[#91a095] rounded-3xl flex align-center items-center px-3 pt-5'>
+        <div className='flex col-span-3 w-full h-full mx-3'>
+          <div className='bg-[#91a095] rounded-3xl grid row-span-2 align-center items-center px-3 pt-5'>
             <img src={homeImages[2]} alt="image3" className='w-full h-full rounded-lg' />
           </div>
           <div className='row-span-3 grid grid-rows-4 justify-center'>
@@ -29,7 +29,7 @@ const Home = () => {
             <img src={homeImages[3]} alt="image4" className='w-full h-full rounded-lg' />
           </div>
         </div>
-        <div className='bg-[#91a095] rounded-3xl flex items-end justify-center'>
+        <div className='grid col-span-2 bg-[#91a095] rounded-3xl items-end justify-center'>
           <img src={homeImages[1]} alt="image2" />
         </div>
       </div>

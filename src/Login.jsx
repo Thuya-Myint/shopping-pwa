@@ -56,31 +56,32 @@ const Login = () => {
     const toggleRememberMe = () => setIsRememberMe(!isRememberMe)
 
     return (
-        <div className='h-screen flex items-center justify-center bg-gradient-to-r from-[#78837b] via-[#c3b1b1] to-[#d4d1d1]'>
+        <div className='h-screen flex items-center justify-center bg-gradient-to-r from-[#78837b] via-[#c3b1b1] to-[#d4d1d1] md:p-60'>
             <div 
                 className="bg-secondary 
-                xl:w-3/5
-                md:w-[50%] w-[100%] 
-                rounded-3xl grid grid-cols-5"
+                w-3/4 
+                rounded-3xl grid grid-cols-2"
                 onSubmit={(e) =>  handleSubmit(e)}
             >
-                <div className='bg-primary rounded-tl-3xl rounded-bl-3xl col-span-3 p-3'>
+                <div className='bg-primary rounded-tl-3xl md:col-span-1 rounded-bl-3xl hidden lg:grid p-3'>
                     <img src={LoginImages[1]} alt="Login Image" className='w-full h-full' />
                 </div>
-                <form className=' bg-secondary rounded-tr-3xl rounded-br-3xl col-span-2 py-10'>
-                    <div className='px-7'>
-                        <div className='flex items-center justify-center pt-2'>
+                <form className='grid w-full col-span-2 p-4 md:col-span-1 bg-secondary lg:rounded-tr-3xl rounded-3xl py-10'>
+                    <div className=''>
+                        <div className='flex items-center justify-center'>
                             {/* <img src={LoginImages[0]} alt="logo" className='w-[100px]' /> */}
                         </div>
-                        <h1 className='text-center text-2xl font-mono font-bold text-txtColor mt-5 mb-3'>Nice to see you again</h1>
-                        <div className='grid w-full gap-4 pt-3'>
-                            <input 
-                            value={email}
-                            type="text" 
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder='Email or phone number'
-                            className='bg-primary rounded-lg py-2 pl-2 inputHover outline-none' />
-                            <div className='w-full place-content-between flex items-center bg-primary rounded-lg py-2 px-2 inputHover'>
+                        <h1 className='text-center text-2xl font-mono font-bold text-txtColor mb-3'>Nice to see you again</h1>
+                        <div className='w-full pt-3'>
+                            <div className='bg-primary rounded-lg py-2 mb-3 pl-2 inputHover'>
+                                <input 
+                                value={email}
+                                type="text" 
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder='Email or phone number'
+                                className='outline-none' />
+                            </div>
+                            <div className='place-content-between flex items-center bg-primary rounded-lg py-2 px-2 inputHover'>
                                 <input 
                                 value={password}
                                 type={isShowPassword ? "text" : "password"}
