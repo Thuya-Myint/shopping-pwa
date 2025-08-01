@@ -1,8 +1,10 @@
 import React from 'react'
-
+import NavBar from './NavBar'
 const Product = () => {
   return (
-    <div className='bgColor'>Product page</div>
+    <div className=''>
+      <NavBar />
+    </div>
   )
 }
 
