@@ -1,8 +1,9 @@
 import React from 'react'
+import Nav from './components/nav'
 const Product = () => {
   return (
     <div>
-      Product
+      <Nav />
     </div>
   )
 }

@@ -1,12 +1,12 @@
 import React from 'react'
-import logo from './assets/img/logo.png'
+import logo from '../assets/img/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook,faInstagram,faXTwitter,faLinkedin,faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
-    <div className='px-[150px] py-[50px] flex items-start gap-[60px]'>
-        <div className='w-[250px] flex flex-col gap-3 '> {/*Social BOx*/}
+    <div className='flex items-start gap-[60px] flex-wrap p-10  justify-between'>
+        <div className='w-full flex flex-col gap-3 md:max-w-[300px]'> {/*Social BOx*/}
             <img src={logo} alt="" className='w-[200px]' />
             <p className=''>Sit amet consectetur adipisicing elit. Quis dolorum placeat saepe tempore voluptatibus odio, Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
             <div className='flex justify-between items-center '>
@@ -18,8 +18,8 @@ const Footer = () => {
                 
             </div>
         </div>
-        <div className='flex-1/12 flex justify-between'>
-            <div className='flex-1 uppercase flex flex-col gap-3'>
+        <div className='flex md:gap-30 flex-col md:flex-row gap-5'>
+            <div className='w-full uppercase flex flex-col gap-3 border-b-2 py-3 md:border-none md:flex-1'>
                 <h2 className='text-xl font-bold'>
                     Quick Links
                 </h2>
@@ -41,7 +41,7 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
-            <div className='flex-1 uppercase flex flex-col gap-3'>
+            <div className='w-full uppercase flex flex-col gap-3 border-b-2 py-3 md:border-none md:flex-1'>
                 <h2 className='text-xl font-bold'>
                     Help & Info
                 </h2>
@@ -63,7 +63,7 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
-            <div className='flex-1 flex flex-col uppercase'>
+            <div className='w-full flex flex-col uppercase border-b-2 py-3 md:border-none md:flex-1'>
                 <h2 className='text-xl font-bold'>
                     Contact Us
                 </h2>

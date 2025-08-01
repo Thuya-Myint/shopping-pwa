@@ -52,7 +52,7 @@ const Carousel = ({ children: slides, autoSlide = false, autoSlideInterval = 300
     if (!slides || slides.length === 0) {
         return <div>No slides to display</div>
     }
-
+    
     
     return (
         <div className='overflow-hidden relative bg-gray-100'>
