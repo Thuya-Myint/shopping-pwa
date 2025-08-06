@@ -1,0 +1,2 @@
+Sticky don't work in  mobile view
+body overflow dont work in mobile view

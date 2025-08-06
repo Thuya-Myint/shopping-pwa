@@ -1,6 +1,6 @@
 import React from 'react'
 import Product from './product'
-import Nav from './components//nav'
+import Nav from './components/nav.jsx'
 import Carousel from './components//Carousel'
 import Footer from './components//Footer'
 import { faShoppingCart,faAward,faTag,faShieldHalved} from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +13,8 @@ import banner2 from './assets/img/banner1.png'
 import banner3 from './assets/img/banner3.png'
 import {blogs,watches,images,} from './constants.js'
 import MobileProduct from './components/MobileProduct.jsx'
-
+import Category from './components/Category.jsx'
+import { category } from './constants'
 
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
   return (
       <div className='text-primaryText min-w-full relative'>
         <div className='sticky top-0 z-20 bg-white shadow-md'><Nav /></div>
-        <Carousel>
+        <Carousel autoSlide={true} autoSlideInterval={4000}>
             <div className="min-w-full flex justify-end items-center p-4 bg-background md:pl-[150px] lg:pl-[300px]">
               <div className='flex flex-1/2 flex-col gap-[30px]'>
                 <div className='flex flex-col gap-[15px]'>
@@ -63,8 +64,8 @@ const Home = () => {
             </div>
 
         </Carousel>
+        <Category category={category} />
 
-        
         <div className='xl:py-[80px] xl:px-[150px] flex flex-col md:gap-[100px] gap-10 mb-10'> {/* Top Container*/}
           <div className='flex justify-between items-center flex-wrap p-5'>
             <div className='flex py-4 gap-3'>
@@ -126,18 +127,6 @@ const Home = () => {
         <div className='lg:py-[80px] lg:px-[150px] flex flex-col lg:gap-[100px] gap-10'> {/* Bottom Container*/}
 
           <Blog blogs={blogs} />
-          {/* <div className='lg:py-[60px] lg:px-[100px] flex justify-center items-center bg-primaryText text-white'>
-              <div className='flex-1/2 flex flex-col gap-2'>
-                <p className='text-3xl'>Subscribe Us Now</p>
-                <p className='text-s normal-case'>Get latest news, updates and deals directly mailed to your inbox.</p>
-              </div>
-              <div className='flex-1/2'>
-                <form className='flex flex-1/2'>
-                  <input type="text" className='flex-1/2 p-3 bg-white placeholder:text-primary outline-0' placeholder='Your Email Address Here'/>
-                  <Link to={'/'} className='flex-1 bg-accent flex justify-center items-center'>Subscribe</Link>
-                </form>
-              </div>
-            </div> */}
         </div>
         <Footer />
       </div>

@@ -5,7 +5,7 @@ import { faFacebook,faInstagram,faXTwitter,faLinkedin,faYoutube } from '@fortawe
 import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
-    <div className='flex items-start gap-[60px] flex-wrap p-10  justify-between'>
+    <div className='flex items-start gap-[60px] bg-white shadow-xs flex-wrap p-10  justify-between'>
         <div className='w-full flex flex-col gap-3 md:max-w-[300px]'> {/*Social BOx*/}
             <img src={logo} alt="" className='w-[200px]' />
             <p className=''>Sit amet consectetur adipisicing elit. Quis dolorum placeat saepe tempore voluptatibus odio, Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
@@ -67,7 +67,7 @@ const Footer = () => {
                 <h2 className='text-xl font-bold'>
                     Contact Us
                 </h2>
-                <p className='normal-case text-primary'>Do you have any queries or suggestions? <br /><span className='underline font-bold text-primaryText'>mansoury@ltd.sg.com</span></p>
+                <p className='normal-case text-primary'>Do you have any queries or suggestions? <br /><span className='underline font-bold text-primaryText'>ecart@ltd.sg.com</span></p>
                 <p className='normal-case text-primary'>If you need support? Just give us a call. <br /><span className='underline font-bold text-primaryText'>+65 9130 8695</span></p>
             </div>
         </div>

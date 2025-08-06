@@ -17,7 +17,13 @@ const userData =userDataString? JSON.parse(userDataString) : null
 const Nav = () => {
   const [isSideOpen, setIsSideOpen] = useState(false)
   const [currentScreen,setCurrentScreen] =useState(window.innerWidth)
-
+  useEffect(()=>{
+    if(isSideOpen){
+      document.body.style.overflow = 'hidden'
+    }else{
+      document.body.style.overflow = 'auto'
+    }
+  },[isSideOpen])
 
   useEffect(()=>{
     const handleResize =()=> setCurrentScreen(window.innerWidth)
@@ -60,7 +66,13 @@ const Nav = () => {
             </div>
           </div>
           {isSideOpen && (
-            <div className="fixed inset-0 bg-black opacity-60 z-20"></div>
+            <div className="fixed inset-0 bg-black opacity-60 z-20" 
+            onClick={(e)=>{
+              e.stopPropagation()
+              setIsSideOpen(false)
+              }
+            }
+            ></div>
           )}
         </div>
 

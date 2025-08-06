@@ -89,7 +89,7 @@ const Login = () => {
     
     return (
         <div className='grid justify-center items-center h-screen lg:grid-cols-2 font-roboto md:bg-gray-500 lg:bg-white'>
-            <div className={`lg:grid h-screen lg:col-span-1 px-[20px] items-center justify-center bg-cover hidden bg-[url('https://media.istockphoto.com/id/1140409137/vector/trendy-low-poly-triangles-with-navy-bg.jpg?s=612x612&w=0&k=20&c=vunManM5m2lfkcgYpOd_dIF-gCGUEUL4SjLYe-o9Nng=')]`}>
+            <div className={`lg:grid h-full lg:col-span-1 px-[20px] items-center justify-center bg-cover hidden bg-[url('https://media.istockphoto.com/id/1140409137/vector/trendy-low-poly-triangles-with-navy-bg.jpg?s=612x612&w=0&k=20&c=vunManM5m2lfkcgYpOd_dIF-gCGUEUL4SjLYe-o9Nng=')]`}>
                 <div className=' bg-primary/70 xl:p-[60px] xl:w-xl xl:pr-[200px] p-[30px]'>
                     <p className='xl:text-[45px]/15 text-[40px] text-white capitalize font-bold mb-2'>Destination for the latest <span className='text-[#141414]'>electronics</span></p>
                     <p className='text-[#141414] text-[18px]'>Unlock a smarter lifestyle with top gadgets delivered right to your door.</p>                   

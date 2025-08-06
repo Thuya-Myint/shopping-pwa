@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState,useEffect } from 'react'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+
+
+
 const MobileProduct = ({images,title}) => {
 
   const [currentScreen,setCurrentScreen] =useState(window.innerWidth)
@@ -30,11 +33,11 @@ const MobileProduct = ({images,title}) => {
                   <div className='relative h-full flex-1 overflow-hidden'>
                     <img src={content.image} alt="" className='object-cover w-full h-full' />
                     <div className={`absolute transition-all duration-200 inset-0 bottom-5 ${hoveredIndex===index?'md:bottom-5':'md:bottom-[-100%]'}  flex justify-center items-end text-white px-[20px]`}>
-                      <Link to={'/cart'} className={`flex justify-center items-center gap-3 bg-black lg:px-7 lg:py-3 px-4 py-2 hover:opacity-80`}>
+                      <Link to={'/cart'} className={`flex justify-center items-center gap-3 bg-black lg:px-7 lg:py-3 px-4 py-2 hover:opacity-80 hover:bg-[# 72aec8]`}>
                         Add To Cart 
                         {/* <FontAwesomeIcon icon={faShoppingCart}  className='hidden md:inline'/> */}
                       </Link>
-                  </div>
+                    </div>
                   </div>
                   <div className='static z-4'>
                     <p className='flex justify-between md:text-xl text-lg'>
@@ -54,5 +57,6 @@ const MobileProduct = ({images,title}) => {
           </div>
   )
 }
+
 
 export default MobileProduct
