@@ -1,6 +1,5 @@
-import React from 'react'
-import Product from './product'
-import Nav from './components/nav.jsx'
+import React ,{useState} from 'react'
+import Nav from './components/Nav'
 import Carousel from './components//Carousel'
 import Footer from './components//Footer'
 import { faShoppingCart,faAward,faTag,faShieldHalved} from '@fortawesome/free-solid-svg-icons'
@@ -15,12 +14,16 @@ import {blogs,watches,images,} from './constants.js'
 import MobileProduct from './components/MobileProduct.jsx'
 import Category from './components/Category.jsx'
 import { category } from './constants'
+import { getItemFromLocalStorage } from './helper/helper.js'
+import VerifyEmail from './components/VerifyEmail'
 
 
 const Home = () => {
-
+  const [userData, setUserData] = useState(getItemFromLocalStorage('user-data'))
+  const isVerified = userData.data.isEmailVerified
   return (
       <div className='text-primaryText min-w-full relative'>
+        {!isVerified?<VerifyEmail />:''}
         <div className='sticky top-0 z-20 bg-white shadow-md'><Nav /></div>
         <Carousel autoSlide={true} autoSlideInterval={4000}>
             <div className="min-w-full flex justify-end items-center p-4 bg-background md:pl-[150px] lg:pl-[300px]">

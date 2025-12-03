@@ -6,164 +6,141 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons'
 import { faToggleOff, faToggleOn } from '@fortawesome/free-solid-svg-icons'
 import { CgSlack } from 'react-icons/cg'
-import loading from './assets/loading/loading.svg'
+import loading from './assets/loading/loading.svg'  
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { setItemToLocalStorage } from './helper/helper'
+
+
 const Login = () => {
-    const mockData =[
-        {   
-            username:'Kyaw Gyi',
-            email:'abcd@gmail.com',
-            password:'abcd'
-        },
-        {
-            username:'Ko Ko',
-            email:'koko@gmail.com',
-            password:'koko'
-        },
-    ]
+
+    const [name, setname] = useState('')
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
     const [isShowPassword,setisShowPassword] = useState(false)
+    const [isLogin, setIsLogin] = useState(true)
     const [isRemember,setisRemember] =useState(false)
-    const [LoginError, setLoginError] = useState(false)
-    const [errorText,seterrorText] =useState('')
-    const [isemailError,setisemaiError] =useState(false)
-    const [isPasswordError, setIsPasswordError] = useState(false)
-    const [IsLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const emailRegX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     const navigate  =useNavigate()
 
-    useEffect(()=>{
-        const userData = JSON.parse(localStorage.getItem('user-data')) || null
-        if(userData?.remember){
-            // navigate('/home')
-            console.log('userdata', userData)
-        }
-    },[isRemember])
-
-    const handleSubmit =(e)=>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
-        try {   
-                setLoginError(false)
-                setisemaiError(false)
-                setIsPasswordError(false)
-                seterrorText('')
+        try{
+            if(!isLogin &&name.trim() === '' ){
+                alert('Please Enter Your Name')
+                return
+            }
             if(email.trim()===''){
-                setisemaiError(true)
-                seterrorText('Your email is empty')
+                alert('Please Enter Your Email')
+                return
+            }else if(!emailRegX.test(email)){
+                alert('Please Enter Correct Email.')
+                return
+            }else if(password.trim()===''){
+                alert("Please Enter Your Password")
                 return
             }
-            if(!emailRegX.test(email)){
-                setisemaiError(true)
-                seterrorText('Please enter valid email format')
-                return
-            }
-            else if(password.trim()===''){
-                setIsPasswordError(true)
-                seterrorText('Your Password is empty')
-                return
-            }
-            const isUser = mockData.find(userData=>
-                userData.email === email && userData.password === password
-            )
-            if(isUser){
-
-                localStorage.setItem('user-data',JSON.stringify({
-                    username: isUser.username,
-                    email:isUser.email,
-                    password: isUser.password,
-                    remember: isRemember
-                }))
-                setemail('')
-                setpassword('')
-                setLoginError(false)
+            const endpoint = !isLogin ? 'http://localhost:8080/api/v1/user/CreateUser' :'http://localhost:8080/api/v1/user/LoginUser'
+            const payload = isLogin ? {email,password} : {name,email,password}
+            const response = await axios.post(endpoint,payload)
+            if(response.data.success){
+                setItemToLocalStorage("user-data",response.data)     
+                // toast.success(response.data.message)
                 navigate('/home')
-            }else{
-                setLoginError(true)              
-            }            
-        } catch (error) {
-            console.log('login error',error)
-            setLoginError(true)
+            }           
+            
+        }catch(error){
+            console.log("Error:",error)
+            toast.error(error.response.data.message)
         }
-        }
+    }
     
     return (
-        <div className='grid justify-center items-center h-screen lg:grid-cols-2 font-roboto md:bg-gray-500 lg:bg-white'>
-            <div className={`lg:grid h-full lg:col-span-1 px-[20px] items-center justify-center bg-cover hidden bg-[url('https://media.istockphoto.com/id/1140409137/vector/trendy-low-poly-triangles-with-navy-bg.jpg?s=612x612&w=0&k=20&c=vunManM5m2lfkcgYpOd_dIF-gCGUEUL4SjLYe-o9Nng=')]`}>
-                <div className=' bg-primary/70 xl:p-[60px] xl:w-xl xl:pr-[200px] p-[30px]'>
-                    <p className='xl:text-[45px]/15 text-[40px] text-white capitalize font-bold mb-2'>Destination for the latest <span className='text-[#141414]'>electronics</span></p>
-                    <p className='text-[#141414] text-[18px]'>Unlock a smarter lifestyle with top gadgets delivered right to your door.</p>                   
-                </div>
-            </div>  
-            <div className='flex justify-center lg:col-span-1 xl:px-[50px] md:col-span-5 p-5 text-xl bg-white'>
-                <div className='xl:px-[40px] xl:py-[20px] gap-[20px] xl:gap-[40px] flex flex-col'>
-                    <img src={logo} alt="" className='w-[200px]'/>
-                    <div>
-                        <p className='text-[32px] font-bold'>Hello,👋</p>
-                        <p className='text-[#3E334E] text-[18px]'>Enter your email and password to login.</p>
+        <>
+            <div className={`h-screen w-screen bg-[url('https://wallpapers.com/images/hd/cubed-squares-black-3d-bqeujlzpj3p2e505.jpg')] bg-cover text-white flex justify-center items-center font-roboto`}>
+                <div className='flex flex-col gap-5 bg-slate-200/20 lg:py-[30px] lg:px-[70px] p-[20px] md:p-[40px] shadow-xl shadow-white/10 rounded-lg backdrop-blur-xs border-2 border-white/20' >
+                    <div className='flex justify-center items-center'>
+                        <img src={logo} alt="" className='w-[200px]'/>
                     </div>
-                    <form className='flex flex-col gap-[20px]' onSubmit={(e)=>handleSubmit(e)}>
-                            {LoginError ? <span className='text-red-500 text-xl'>Incorrect Email or Password</span> : ''
-                                
-                            }
-                        <label  htmlFor="email" className='text-[#3E334E] text-[18px]'>Email {isemailError ? <span className='text-red-500'>{errorText}</span>: ''}</label>
-                            
-                        <input 
-                          value={email}
-                          placeholder='abc@gmail.com'
-                          type="text" 
-                          id='email' 
-                          className={`border-1 rounded-md ${isemailError ? 'border-red-500': ''} text-[#3E334E]/80 text-[18px] py-[10px] px-[10px] focus:outline-0`}
-                          required
-                          onChange={(e)=>setemail(e.target.value)}
-                          />
-                        <label htmlFor="password" className='text-[#3E334E] text-[18px]'>Password {isPasswordError ? <span className='text-red-500'>{errorText}</span>: ''}</label>
-                        <div className={`${isPasswordError ? 'border-red-500': ''} flex border-1 rounded-md justify-center items-center `}>
-                            <input 
-                            value={password}
-                            placeholder='•••••••' 
-                            type={!isShowPassword ? 'password' : 'text'} 
-                            id='password' 
-                            onChange={(e)=>setpassword(e.target.value)}
-                            className='w-[90%] text-[#3E334E]/80 text-[18px] py-[10px] px-[10px] focus:outline-0' required/>
-                            <FontAwesomeIcon icon={!isShowPassword ? faEyeSlash : faEye} className={`hover:cursor-pointer`} onClick={()=>setisShowPassword(!isShowPassword)} />
-                        </div>
-                        
-                        <div className='flex justify-between'>
-                            <div className='flex items-center gap-2'>
-                                <div className={`relative w-12 h-6  transition-all duration-500 ${isRemember ? 'bg-cyan-400' : 'bg-slate-300'} rounded-full cursor-pointer`} onClick={() => setisRemember(!isRemember)}>
-                                    <div
-                                    className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all duration-500 ${isRemember ? 'left-7' : 'left-1'}`}
-                                    />
-                                </div>
-                                <label htmlFor="remember" className='text-lg'>Remember Me</label>
+                    <h2 className='text-2xl font-bold'>{
+                        isLogin?
+                            "Login"
+                        :
+                            "Register"
+                        }</h2>
+                    <form action="" className='flex flex-col gap-4' onSubmit={(e)=>{handleSubmit(e)}}>
+
+                        {
+                            isLogin?
+                            ''
+                            :
+                            <div className='flex flex-col gap-2'>
+                                <label htmlFor="name" className=''>Full Name</label>
+                                <input required value={name} id='name' type="text" className='bg-white p-2 rounded-md outline-0 text-black' onChange={(e)=>setname(e.target.value)}/>
                             </div>
-                            <div>
-                                <Link to={'/'} className='text-lg underline hover:opacity-50'>Forgot Password?</Link>
-                            </div> 
-                        </div> 
-                        <div className='grid lg:grid-cols-2 gap-[20px]'>
-                            <button type="submit" 
-                            className={`px-[25px] py-[15px] bg-linear-to-t to-[#646464] from-[#141414] rounded-md flex justify-center items-center hover:cursor-pointer text-white font-semibold hover:opacity-50`}
-                            >
-                                {IsLoading? <img src={loading} className='w-[25px]'/>: 'Login'}
-                            </button>
-                            {/* <Link to={'/'} className='px-[25px] py-[15px] border-1 rounded-md flex justify-center items-center font-semibold hover:bg-gray-300'>Sign Up</Link> */}
-                            <button type="submit" className='hover:cursor-pointer px-[25px] py-[15px] border-1 rounded-md flex justify-center items-center font-semibold hover:bg-gray-300'>
-                                Sign Up
-                            </button>
-                        </div> 
-                        <p className='text-center'>Or, login with</p> 
-                        <div className='grid grid-cols-3  gap-[20px]'>
-                            <Link to={'/'} className='px-[20px] py-[15px] text-[18px] border-1 rounded-md flex justify-center items-center hover:bg-gray-300'>Facebook</Link>
-                            <Link to={'/'} className='px-[20px] py-[15px] text-[18px] border-1 rounded-md flex justify-center items-center hover:bg-gray-300'>Google</Link>
-                            <Link to={'/'} className='px-[20px] py-[15px] text-[18px] border-1 rounded-md flex justify-center items-center hover:bg-gray-300'>Linked In</Link>
-                        </div>   
-            
+
+                        }    
+
+                        <div className='flex flex-col gap-2'>
+                            <label htmlFor="email" className=''>Email</label>
+                            <input required value={email} id='email' type="email" className='bg-white p-2 rounded-md outline-0 text-black' onChange={(e)=>setemail(e.target.value)}/>
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <label htmlFor="password" className=''>Password</label>
+                            <div className='bg-white p-2 rounded-md flex justify-between items-center'>
+                            <input required type={isShowPassword?'text':'password'} value={password} id='password' className='outline-0 text-black' onChange={(e)=>setpassword(e.target.value)}/>
+                            <FontAwesomeIcon icon={isShowPassword?faEye :faEyeSlash}  className={`text-black cursor-pointer active:opacity-65`} onClick={()=>setisShowPassword(!isShowPassword)}/>
+                            </div>
+                        </div>
+                        <div className='flex gap-[30px] items-center'>
+                            <div className='flex gap-2 items-center text-sm'>
+                                <div className={`w-[40px] h-[20px] cursor-pointer transition-all duration-500 ${isRemember?"bg-black":"bg-white "}  rounded-full relative flex items-center px-[3px]`} onClick={()=>setisRemember(!isRemember)}>
+                                    <div className={`w-[15px] h-[15px] transition-all duration-500 rounded-full absolute ${isRemember?'left-5 bg-white' :'left-1 bg-black'} `}></div>
+                                </div>
+                                Remember Me
+                            </div>
+                            <div className='flex gap-2 text-sm hover:underline cursor-pointer'>
+                                Forget Password?
+                            </div>
+                        </div>
+                        <button className='relative bg-gray-800 p-2 rounded-md cursor-pointer hover:opacity-75 active:opacity-80' >
+                            {
+                                isLogin?
+                                "Login"
+                                :
+                                "Sign Up"
+                            }
+                        </button>
                     </form>
+                    <div className='text-center'>
+                        or continue with
+                    </div>
+                    <div className='flex justify-between'>
+                        <div className='w-[70px] bg-white rounded-lg py-2 px-5 '>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png" alt="" />
+                        </div>
+                        <div className='w-[70px] bg-white rounded-lg py-2 px-5 '>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png" alt="" />
+                        </div>
+                        <div className='w-[70px] bg-white rounded-lg py-2 px-5 '>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/900px-2023_Facebook_icon.svg.png?20231011122028" alt="" />
+                        </div>
+                    </div>
+                    <div className='text-sm text-center'>
+                        Don't have an account? <span className='font-semibold cursor-pointer hover:underline active:opacity-80' onClick={()=>setIsLogin(!isLogin)}> 
+                            {
+                               isLogin?
+                               'Register for free'
+                               :
+                               'Already have an account?'     
+                            }
+                            </span>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div>   
+        </>
     )
 }
 

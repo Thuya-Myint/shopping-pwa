@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const ProductList = ({category}) => {
     const navigate=useNavigate()
     const filiteredProduct = products.filter(item=>!category || item.category===category)
-
+    
 
   return (
     <>
@@ -16,10 +16,6 @@ const ProductList = ({category}) => {
                 <div className='col-span-4 text-2xl flex justify-center items-center p-4 '>
                     There is no product in {category || 'this category'}
                 </div>
-                {/* <h2 className='text-5xl col-span-4'>These are our products</h2>
-                <div className='col-span-4'>
-                    <ProductList />
-                </div> */}
                 </>
                 ) :(
                 filiteredProduct.map((item)=>{
@@ -59,6 +55,7 @@ const ProductList = ({category}) => {
                                 <p>({item.ratingCount})</p>
                             </div>
                         </div>
+
                         <div className='py-4 flex justify-center md:justify-start'>
                             <button className='rounded-full px-[50px] py-2 border-primary border-2 transition-all duration-300 hover:bg-black hover:text-white hover:cursor-pointer'>Add to Cart</button>
                         </div>

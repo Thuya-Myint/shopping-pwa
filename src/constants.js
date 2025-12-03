@@ -58,16 +58,6 @@ export const products=[
     category:'Mac',
   },
   {
-    id:'p4',
-    name:'Mac mini',
-    detail:'Apple certified product',
-    ratingCount:89,
-    rating:3.5,
-    image:mac4,
-    price:598.99,
-    category:'Mac',
-  },
-  {
     id:'p5',
     name:'iPhone 16',
     detail:'Apple certified product',
@@ -97,16 +87,7 @@ export const products=[
     price:598.99,
     category:'iPhone',
   },
-  {
-    id:'p8',
-    name:'iPhone 15',
-    detail:'Apple certified product',
-    ratingCount:39,
-    rating:3.9,
-    image:image4,
-    price:598.99,
-    category:'iPhone',
-  },
+
   {
     id:'p9',
     name:'Apple Watch SE',
@@ -137,18 +118,9 @@ export const products=[
     image:watchData[2],
     category:'Apple watch'
   },
+
     {
-    id:'p12',
-      name:'Apple Watch Ultra 2',
-    detail:'Apple certified product',
-    ratingCount:111,
-    rating:4.3,
-      price:1198.99,
-    image:watchData[3],
-    category:'Apple watch'
-  },
-    {
-    id:'p13',
+    id:'p16',
       name:'iPad Pro',
     detail:'Apple certified product',
     ratingCount:101,
@@ -158,7 +130,7 @@ export const products=[
     category:'iPad'
   },
     {
-    id:'p14',
+    id:'p17',
       name:'iPad Air',
     detail:'Apple certified product',
     ratingCount:231,
@@ -168,7 +140,7 @@ export const products=[
     category:'iPad'
   },
     {
-    id:'p15',
+    id:'p18',
       name:'iPad',
     detail:'Apple certified product',
     ratingCount:301,
@@ -177,16 +149,69 @@ export const products=[
     image:pad3,
     category:'iPad'
   },
-    {
-    id:'p16',
-      name:'iPad mini',
+  {
+    id:'p14',
+    name:'Apple Watch SE',
     detail:'Apple certified product',
-    ratingCount:123,
+    ratingCount:111,
     rating:4.3,
-      price:498.99,
-    image:pad1,
+    price:348.99,
+    image:watchData[0],
+    category:'Apple watch'
+  },
+  {
+    id:'p13',
+    name:'Apple Watch Series 10A',
+    detail:'Apple certified product',
+    ratingCount:111,
+    rating:4.3,
+    price:598.99,
+    image:watchData[1],
+    category:'Apple watch'
+  },
+  
+      {
+      id:'p21',
+        name:'iPad Pro',
+      detail:'Apple certified product',
+      ratingCount:101,
+      rating:4.3,
+        price:998.99,
+      image:pad1,
+      category:'iPad'
+    },
+    {
+    id:'p15',
+      name:'Apple Watch Series 10T',
+    detail:'Apple certified product',
+    ratingCount:111,
+    rating:4.3,
+      price:1048.99,
+    image:watchData[2],
+    category:'Apple watch'
+  },
+    {
+    id:'p20',
+      name:'iPad Air',
+    detail:'Apple certified product',
+    ratingCount:231,
+    rating:3.6,
+      price:598.99,
+    image:pad2,
     category:'iPad'
   },
+    {
+    id:'p19',
+      name:'iPad',
+    detail:'Apple certified product',
+    ratingCount:301,
+    rating:4.6,
+      price:348.99,
+    image:pad3,
+    category:'iPad'
+  },
+
+
 ]
 
 
